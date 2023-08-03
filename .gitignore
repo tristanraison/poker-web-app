@@ -1,0 +1,26 @@
+# .gitignore
+
+# Ignore Node.js modules
+node_modules/
+
+# Ignore development environment files
+.env
+
+# Ignore build artifacts
+build/
+dist/
+out/
+
+# Ignore temporary files
+*.log
+*.tmp
+*.swp
+
+# Ignore IDE and editor-specific files
+.idea/
+.vscode/
+.vim/
+
+# Ignore configuration files for package managers
+package-lock.json
+yarn.lock
