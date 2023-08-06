@@ -1,0 +1,1 @@
+{"scripts":{"start":"node backend/index.js","server":"node backend/index.js","client":"cd frontend/poker-web-app-frontend && npm start","dev":"concurrently \"npm run server\" \"npm run client\""},"dependencies":{"react-playing-card":"^0.2.5"}}

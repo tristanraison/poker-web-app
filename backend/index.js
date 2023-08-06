@@ -1,7 +1,7 @@
 // index.js
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000; // Use the port 3000 or the environment port if available
+const PORT = process.env.PORT || 3001; // Use the port 3000 or the environment port if available
 
 app.use(express.json()); // Parse JSON request bodies
 
