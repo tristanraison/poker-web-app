@@ -28,6 +28,19 @@ describe("hasStraightFlush", () => {
     expect(hasStraightFlush(straightFlush)).toBe(true);
   });
 
+  it("should detect a straight flush with unsorted 7 cards", () => {
+    const straightFlush = [
+      new PokerCard("Ace", "Spades"),
+      new PokerCard("3", "Spades"),
+      new PokerCard("2", "Spades"),
+      new PokerCard("5", "Spades"),
+      new PokerCard("4", "Spades"),
+      new PokerCard("9", "Hearth"),
+      new PokerCard("Ace", "Hearth"),
+    ];
+    expect(hasStraightFlush(straightFlush)).toBe(true);
+  });
+
   it("should not detect a straight flush when not present", () => {
     const notStraightFlush = [
       new PokerCard("10", "Hearts"),

@@ -23,6 +23,16 @@ function getFlushRanks(cards, suit) {
     .filter((card) => card.suit === suit)
     .sort((a, b) => deck.ranks.indexOf(a.rank) - deck.ranks.indexOf(b.rank));
 
+  // Handle Ace-low straight for straight flush
+  const aceLowStraightRanks = ["Ace", "2", "3", "4", "5"];
+  const isAceLowStraight = aceLowStraightRanks.every((rank) =>
+    sortedCards.some((card) => card.rank === rank)
+  );
+
+  if (isAceLowStraight) {
+    return aceLowStraightRanks;
+  }
+
   for (let i = 0; i < sortedCards.length - 4; i++) {
     if (
       deck.ranks.indexOf(sortedCards[i].rank) + 4 ===
