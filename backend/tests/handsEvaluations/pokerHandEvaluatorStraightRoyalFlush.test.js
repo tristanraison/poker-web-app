@@ -1,6 +1,8 @@
 // poker-web-app-backend/utils/__tests__/pokerHandEvaluator.test.js
 const PokerCard = require("../../models/pokerCard");
-const { hasRoyalFlush } = require("../../models/utils/pokerHandEvaluator");
+const {
+  hasRoyalFlush,
+} = require("../../models/utils/pokerHandEvaluatorStraightRoyalFlush");
 
 describe("hasRoyalFlush", () => {
   it("should detect a royal flush", () => {
