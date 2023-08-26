@@ -1,6 +1,7 @@
 const PokerCard = require("../../models/pokerCard");
 const {
   hasThreeOfAKind,
+  getThreeOfAKindRank,
 } = require("../../models/utils/pokerHandEvaluatorThreeOfAKind");
 
 describe("hasThreeOfAKind", () => {
@@ -46,6 +47,29 @@ describe("hasThreeOfAKind", () => {
       new PokerCard("King", "Diamonds"),
     ];
     expect(hasThreeOfAKind(notThreeOfAKindHand)).toBe(false);
+  });
+
+  it("should detect a three of a kind of 4 with a set of 6 cards", () => {
+    const threeOfAKind4Hand = [
+      new PokerCard("4", "Hearts"),
+      new PokerCard("4", "Diamonds"),
+      new PokerCard("4", "Clubs"),
+      new PokerCard("Jack", "Spades"),
+      new PokerCard("Queen", "Hearts"),
+      new PokerCard("King", "Diamonds"),
+    ];
+    expect(getThreeOfAKindRank(threeOfAKind4Hand)).toBe("4");
+  });
+
+  it("should not detect a three of a kind rank with a set of 5 cards", () => {
+    const notThreeOfAKindHand = [
+      new PokerCard("4", "Hearts"),
+      new PokerCard("4", "Diamonds"),
+      new PokerCard("Jack", "Spades"),
+      new PokerCard("Queen", "Hearts"),
+      new PokerCard("King", "Diamonds"),
+    ];
+    expect(getThreeOfAKindRank(notThreeOfAKindHand)).toBe(null);
   });
 });
 
