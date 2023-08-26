@@ -1,5 +1,8 @@
 const PokerCard = require("../../models/pokerCard");
-const { hasPair } = require("../../models/utils/pokerHandEvaluatorPair");
+const {
+  hasPair,
+  getPairRank,
+} = require("../../models/utils/pokerHandEvaluatorPair");
 
 describe("hasPair", () => {
   it("should detect a pair", () => {
@@ -59,4 +62,24 @@ describe("hasPair", () => {
   });
 });
 
-// Add more test cases for other hand evaluation functions...
+describe("getPairRank", () => {
+  it("should detect a pair of 10", () => {
+    const pairHand = [
+      new PokerCard("10", "Hearts"),
+      new PokerCard("10", "Diamonds"),
+      new PokerCard("7", "Clubs"),
+      new PokerCard("5", "Spades"),
+      new PokerCard("2", "Hearts"),
+    ];
+    expect(getPairRank(pairHand)).toBe("10");
+  });
+
+  it("should not detect a pair and return null value", () => {
+    const pairHand = [
+      new PokerCard("10", "Hearts"),
+      new PokerCard("5", "Spades"),
+      new PokerCard("2", "Hearts"),
+    ];
+    expect(getPairRank(pairHand)).toBe(null);
+  });
+});
