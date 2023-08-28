@@ -2,7 +2,7 @@ const PokerCard = require("../../models/pokerCard");
 const {
   hasThreeOfAKind,
   getThreeOfAKindRank,
-} = require("../../models/utils/pokerHandEvaluatorThreeOfAKind");
+} = require("../../models/utils/handsEvaluations/pokerHandEvaluatorThreeOfAKind");
 
 describe("hasThreeOfAKind", () => {
   it("should detect a three of a kind", () => {

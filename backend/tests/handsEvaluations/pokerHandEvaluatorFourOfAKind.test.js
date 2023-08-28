@@ -2,7 +2,7 @@ const PokerCard = require("../../models/pokerCard");
 const {
   hasFourOfAKind,
   getFourOfAKindRank,
-} = require("../../models/utils/pokerHandEvaluatorFourOfAKind");
+} = require("../../models/utils/handsEvaluations/pokerHandEvaluatorFourOfAKind");
 
 describe("hasFourOfAKind", () => {
   it("should detect a four of a kind", () => {

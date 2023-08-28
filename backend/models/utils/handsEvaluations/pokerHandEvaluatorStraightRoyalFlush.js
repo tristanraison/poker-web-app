@@ -1,5 +1,5 @@
-const PokerCard = require("../pokerCard");
-const Deck = require("../deck");
+const PokerCard = require("../../pokerCard");
+const Deck = require("../../deck");
 
 function evaluateHand(hand) {
   const combinations = [];

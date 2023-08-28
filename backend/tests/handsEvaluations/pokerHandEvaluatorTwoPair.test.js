@@ -2,7 +2,7 @@ const PokerCard = require("../../models/pokerCard");
 const {
   hasTwoPair,
   getTwoPairRanks,
-} = require("../../models/utils/pokerHandEvaluatorTwoPair");
+} = require("../../models/utils/handsEvaluations/pokerHandEvaluatorTwoPair");
 
 describe("hasTwoPair", () => {
   it("should detect two pairs", () => {

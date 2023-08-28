@@ -2,7 +2,7 @@
 const PokerCard = require("../../models/pokerCard");
 const {
   hasRoyalFlush,
-} = require("../../models/utils/pokerHandEvaluatorStraightRoyalFlush");
+} = require("../../models/utils/handsEvaluations/pokerHandEvaluatorStraightRoyalFlush");
 
 describe("hasRoyalFlush", () => {
   it("should detect a royal flush", () => {

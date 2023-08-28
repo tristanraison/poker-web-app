@@ -1,7 +1,7 @@
 const PokerCard = require("../../models/pokerCard");
 const {
   hasFullHouse,
-} = require("../../models/utils/pokerHandEvaluatorFullHouse"); // Update with the actual path
+} = require("../../models/utils/handsEvaluations/pokerHandEvaluatorFullHouse"); // Update with the actual path
 
 describe("hasFullHouse", () => {
   it("should detect a full house", () => {

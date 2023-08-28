@@ -1,7 +1,7 @@
 const {
   hasThreeOfAKind,
   getThreeOfAKindRank,
-} = require("./pokerHandEvaluatorThreeOfAKind"); // Update with the actual path
+} = require("../handsEvaluations/pokerHandEvaluatorThreeOfAKind"); // Update with the actual path
 const { hasPair } = require("./pokerHandEvaluatorPair");
 
 function hasFullHouse(cards) {

@@ -1,27 +1,31 @@
-const PokerCard = require("../pokerCard");
-const Deck = require("../deck");
+const PokerCard = require("../../pokerCard");
+const Deck = require("../../deck");
 
-function hasThreeOfAKind(cards) {
+function hasFourOfAKind(cards) {
   const rankCount = new Map();
-
   for (const card of cards) {
     const rank = card.rank;
     rankCount.set(rank, (rankCount.get(rank) || 0) + 1);
   }
 
-  return Array.from(rankCount.values()).includes(3);
+  for (const count of rankCount.values()) {
+    if (count >= 4) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
-function getThreeOfAKindRank(cards) {
+function getFourOfAKindRank(cards) {
   const rankCount = new Map();
-
   for (const card of cards) {
     const rank = card.rank;
     rankCount.set(rank, (rankCount.get(rank) || 0) + 1);
   }
 
   for (const [rank, count] of rankCount.entries()) {
-    if (count === 3) {
+    if (count >= 4) {
       return rank;
     }
   }
@@ -30,7 +34,7 @@ function getThreeOfAKindRank(cards) {
 }
 
 module.exports = {
-  hasThreeOfAKind,
-  getThreeOfAKindRank,
+  hasFourOfAKind,
+  getFourOfAKindRank,
   // Export other hand evaluation functions...
 };

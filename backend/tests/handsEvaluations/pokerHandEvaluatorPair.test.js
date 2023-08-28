@@ -2,7 +2,7 @@ const PokerCard = require("../../models/pokerCard");
 const {
   hasPair,
   getPairRank,
-} = require("../../models/utils/pokerHandEvaluatorPair");
+} = require("../../models/utils/handsEvaluations/pokerHandEvaluatorPair");
 
 describe("hasPair", () => {
   it("should detect a pair", () => {

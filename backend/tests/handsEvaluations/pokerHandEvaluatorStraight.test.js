@@ -2,7 +2,7 @@ const PokerCard = require("../../models/pokerCard");
 const {
   hasStraight,
   getStraightHighRank,
-} = require("../../models/utils/pokerHandEvaluatorStraight");
+} = require("../../models/utils/handsEvaluations/pokerHandEvaluatorStraight");
 
 describe("hasStraight", () => {
   it("should detect a straight", () => {

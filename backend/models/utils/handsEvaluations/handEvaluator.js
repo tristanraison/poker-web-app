@@ -1,9 +1,9 @@
-const { hasRoyalFlush } = require("./pokerHandEvaluatorStraightRoyalFlush");
-const { hasStraightFlush } = require("./pokerHandEvaluatorStraightFlush");
-const { hasFourOfAKind } = require("./pokerHandEvaluatorFourOfAKind");
-const { hasFlush } = require("./pokerHandEvaluatorFlush");
-const { hasStraight } = require("./pokerHandEvaluatorStraight");
-const { hasThreeOfAKind } = require("./pokerHandEvaluatorThreeOfAKind");
+const { hasRoyalFlush } = require("../pokerHandEvaluatorStraightRoyalFlush");
+const { hasStraightFlush } = require("../pokerHandEvaluatorStraightFlush");
+const { hasFourOfAKind } = require("../pokerHandEvaluatorFourOfAKind");
+const { hasFlush } = require("../pokerHandEvaluatorFlush");
+const { hasStraight } = require("../pokerHandEvaluatorStraight");
+const { hasThreeOfAKind } = require("../pokerHandEvaluatorThreeOfAKind");
 
 const { hasPair } = require("./pokerHandEvaluatorPair");
 
