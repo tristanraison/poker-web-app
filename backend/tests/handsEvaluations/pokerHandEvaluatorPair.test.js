@@ -74,12 +74,20 @@ describe("getPairRank", () => {
     expect(getPairRank(pairHand)).toBe("10");
   });
 
-  it("should not detect a pair and return null value", () => {
+  it("should detect a pair of 10 among 2 cards", () => {
     const pairHand = [
+      new PokerCard("2", "Hearts"),
+      new PokerCard("2", "Diamonds"),
+    ];
+    expect(getPairRank(pairHand)).toBe("2");
+  });
+
+  it("should not detect a pair and return null value", () => {
+    const noPairHand = [
       new PokerCard("10", "Hearts"),
       new PokerCard("5", "Spades"),
       new PokerCard("2", "Hearts"),
     ];
-    expect(getPairRank(pairHand)).toBe(null);
+    expect(getPairRank(noPairHand)).toBe(null);
   });
 });

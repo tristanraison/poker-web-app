@@ -1,6 +1,7 @@
 const PokerCard = require("../../models/pokerCard");
 const {
   hasStraightFlush,
+  getStraightFlushHighRank,
 } = require("../../models/utils/pokerHandEvaluatorStraightFlush");
 
 describe("hasStraightFlush", () => {
@@ -72,6 +73,44 @@ describe("hasStraightFlush", () => {
       new PokerCard("8", "Hearts"),
     ];
     expect(hasStraightFlush(notStraightFlush)).toBe(false);
+  });
+});
+
+describe("hasStraightFlush", () => {
+  it("should not detect a straight flush then returns null value", () => {
+    const notStraightFlush = [
+      new PokerCard("2", "Hearts"),
+      new PokerCard("3", "Hearts"),
+      new PokerCard("4", "Hearts"),
+      new PokerCard("7", "Hearts"),
+      new PokerCard("7", "Hearts"),
+      new PokerCard("8", "Hearts"),
+    ];
+    expect(getStraightFlushHighRank(notStraightFlush)).toBe(null);
+  });
+
+  it("should detect a straight flush then returns 10 value", () => {
+    const straightFlush = [
+      new PokerCard("6", "Hearts"),
+      new PokerCard("7", "Hearts"),
+      new PokerCard("8", "Hearts"),
+      new PokerCard("9", "Hearts"),
+      new PokerCard("10", "Hearts"),
+      new PokerCard("8", "Clubs"),
+    ];
+    expect(getStraightFlushHighRank(straightFlush)).toBe("10");
+  });
+
+  it("should detect a straight flush then returns 5 value", () => {
+    const straightFlush = [
+      new PokerCard("Ace", "Hearts"),
+      new PokerCard("3", "Hearts"),
+      new PokerCard("8", "Hearts"),
+      new PokerCard("2", "Hearts"),
+      new PokerCard("4", "Hearts"),
+      new PokerCard("5", "Hearts"),
+    ];
+    expect(getStraightFlushHighRank(straightFlush)).toBe("5");
   });
 });
 

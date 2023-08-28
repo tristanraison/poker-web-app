@@ -1,6 +1,7 @@
 const PokerCard = require("../../models/pokerCard");
 const {
   hasFourOfAKind,
+  getFourOfAKindRank,
 } = require("../../models/utils/pokerHandEvaluatorFourOfAKind");
 
 describe("hasFourOfAKind", () => {
@@ -49,4 +50,16 @@ describe("hasFourOfAKind", () => {
   });
 });
 
-// Add more test cases for other hand evaluation functions...
+describe("getFourOfAKindRank", () => {
+  it("should detect a `10` four of a kind with a set of 4 cards", () => {
+    const at10FourOfAKind = [
+      new PokerCard("10", "Hearts"),
+      new PokerCard("10", "Diamonds"),
+      new PokerCard("10", "Clubs"),
+      new PokerCard("10", "Spades"),
+    ];
+    expect(getFourOfAKindRank(at10FourOfAKind)).toBe("10");
+  });
+
+  // Add more tests for the getFourOfAKindRank function...
+});

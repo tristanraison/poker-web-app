@@ -1,5 +1,5 @@
 const PokerCard = require("./../pokerCard");
-const Deck = require("./../deck"); // Make sure the path is correct
+const Deck = require("./../deck");
 
 function hasStraightFlush(cards) {
   const suits = new Set();
@@ -45,7 +45,25 @@ function getFlushRanks(cards, suit) {
   return null;
 }
 
+function getStraightFlushHighRank(cards) {
+  const sortedCards = cards.sort((a, b) => a.rankValue - b.rankValue); // Sort the cards before processing
+  const suits = new Set();
+  for (const card of sortedCards) {
+    suits.add(card.suit);
+  }
+
+  for (const suit of suits) {
+    const flushRanks = getFlushRanks(sortedCards, suit);
+    if (flushRanks) {
+      return flushRanks[4]; // Return the highest rank of the straight flush
+    }
+  }
+
+  return null;
+}
+
 module.exports = {
   hasStraightFlush,
+  getStraightFlushHighRank,
   // Export other hand evaluation functions...
 };

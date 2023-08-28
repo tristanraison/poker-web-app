@@ -1,5 +1,8 @@
 const PokerCard = require("../../models/pokerCard");
-const { hasFlush } = require("../../models/utils/pokerHandEvaluatorFlush");
+const {
+  hasFlush,
+  getFlushHighRank,
+} = require("../../models/utils/pokerHandEvaluatorFlush");
 
 describe("hasFlush", () => {
   it("should detect a flush", () => {
@@ -60,4 +63,48 @@ describe("hasFlush", () => {
   });
 });
 
-// Add more test cases for other hand evaluation functions...
+describe("getFlushRanks", () => {
+  it("should not detect a flush then return a null", () => {
+    const flushHand = [
+      new PokerCard("7", "Hearts"),
+      new PokerCard("2", "Hearts"),
+      new PokerCard("10", "Hearts"),
+      new PokerCard("4", "Hearts"),
+      new PokerCard("King", "Clubs"),
+    ];
+    expect(getFlushHighRank(flushHand)).toBeNull(); // Use toBeNull() instead of toBe(null)
+  });
+
+  it("should detect a flush then return a 10", () => {
+    const flushHand = [
+      new PokerCard("6", "Hearts"),
+      new PokerCard("4", "Hearts"),
+      new PokerCard("10", "Hearts"),
+      new PokerCard("2", "Hearts"),
+      new PokerCard("5", "Hearts"),
+    ];
+    expect(getFlushHighRank(flushHand)).toBe("10");
+  });
+
+  it("should not detect a flush then return null (part 2)", () => {
+    const flushHand = [
+      new PokerCard("6", "Hearts"),
+      new PokerCard("4", "Spades"),
+      new PokerCard("10", "Hearts"),
+      new PokerCard("2", "Hearts"),
+      new PokerCard("5", "Hearts"),
+    ];
+    expect(getFlushHighRank(flushHand)).toBe(null);
+  });
+
+  it("should detect a flush then return an Ace", () => {
+    const flushHand = [
+      new PokerCard("Ace", "Hearts"),
+      new PokerCard("4", "Hearts"),
+      new PokerCard("9", "Hearts"),
+      new PokerCard("2", "Hearts"),
+      new PokerCard("5", "Hearts"),
+    ];
+    expect(getFlushHighRank(flushHand)).toBe("Ace");
+  });
+});

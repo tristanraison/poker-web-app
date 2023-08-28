@@ -1,6 +1,7 @@
 const PokerCard = require("../../models/pokerCard");
 const {
   hasStraight,
+  getStraightHighRank,
 } = require("../../models/utils/pokerHandEvaluatorStraight");
 
 describe("hasStraight", () => {
@@ -72,6 +73,56 @@ describe("hasStraight", () => {
       new PokerCard("2", "Diamonds"),
     ];
     expect(hasStraight(notStraightHand)).toBe(false);
+  });
+});
+
+describe("hasStraight", () => {
+  it("should not detect a straight then returns null value", () => {
+    const notStraightHand = [
+      new PokerCard("10", "Hearts"),
+      new PokerCard("10", "Diamonds"),
+      new PokerCard("Queen", "Clubs"),
+      new PokerCard("King", "Spades"),
+      new PokerCard("3", "Hearts"),
+      new PokerCard("2", "Diamonds"),
+    ];
+    expect(getStraightHighRank(notStraightHand)).toBe(null);
+  });
+
+  it("should detect a straight then returns King value", () => {
+    const notStraightHand = [
+      new PokerCard("10", "Hearts"),
+      new PokerCard("9", "Diamonds"),
+      new PokerCard("Queen", "Clubs"),
+      new PokerCard("King", "Spades"),
+      new PokerCard("Jack", "Hearts"),
+      new PokerCard("6", "Diamonds"),
+    ];
+    expect(getStraightHighRank(notStraightHand)).toBe("King");
+  });
+
+  it("should detect a straight then returns Ace value (highest straight)", () => {
+    const hasStraightHand = [
+      new PokerCard("10", "Hearts"),
+      new PokerCard("10", "Diamonds"),
+      new PokerCard("Queen", "Clubs"),
+      new PokerCard("King", "Spades"),
+      new PokerCard("Jack", "Hearts"),
+      new PokerCard("Ace", "Diamonds"),
+    ];
+    expect(getStraightHighRank(hasStraightHand)).toBe("Ace");
+  });
+
+  it("should detect a straight then returns 5 value (lowest straight)", () => {
+    const hasStraightHand = [
+      new PokerCard("3", "Hearts"),
+      new PokerCard("4", "Diamonds"),
+      new PokerCard("2", "Clubs"),
+      new PokerCard("5", "Spades"),
+      new PokerCard("Jack", "Hearts"),
+      new PokerCard("Ace", "Diamonds"),
+    ];
+    expect(getStraightHighRank(hasStraightHand)).toBe("5");
   });
 });
 
