@@ -1,0 +1,99 @@
+/* game.css */
+
+.game-container {
+    position: relative;
+    width: 100%;
+    max-width: 1060px;
+    height: 100%;
+    margin: 0px auto;
+    border: 2px solid #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(48, 48, 48);
+}
+
+.poker-table-wrapper {
+    width: 70%;
+    /* Keep the desired width */
+    height: 100%;
+    /* Adjust height as needed */
+}
+
+.seat-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f486;
+    /* Light grey as the base background */
+    flex: 0 0 calc(15% - 3%);
+    /* Use flex properties to control width and margin */
+    padding-top: calc(18.5% - 3%);
+    /* Maintain aspect ratio with padding */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 10px;
+    margin: 0.5%;
+    /* Use percentage-based margin */
+}
+
+.seats-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Align items in the center */
+    width: 100%;
+    /* Adjust the width as needed */
+    height: 100%;
+    /* Use 100% height to match the height of the parent container */
+    z-index: 0;
+    /* Place it below the poker table */
+    flex-wrap: wrap;
+    /* Allow items to wrap to a new line if needed */
+}
+
+
+.menu-and-stats-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 20px;
+    /* Add other styling as needed */
+}
+
+.card-input-menu {
+    display: flex;
+    /* Take up equal space on the left */
+    padding: 5px;
+    width: 35%;
+    /* Add other styling as needed */
+}
+
+.statistics-and-probability {
+    flex: 1;
+    /* Take up equal space on the right */
+    display: flex;
+    flex-direction: column;
+    /* Divide vertically into two parts */
+    justify-content: space-between;
+    /* Add other styling as needed */
+    margin-left: 5px;
+    /* Add a margin for spacing between the two sections */
+}
+
+.win-probability {
+    flex: 1;
+    /* Take up half of the available space on top */
+    background-color: #222;
+}
+
+.statistics {
+    flex: 1;
+    /* Take up half of the available space on bottom */
+    background-color: #222;
+    /* Add other styling as needed */
+}

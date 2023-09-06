@@ -1,0 +1,47 @@
+import React from "react";
+import Card from "./Card";
+import Player from "./Player";
+import CardsWrapper from "./CardWrapper";
+import "./../css/pokerTable.css"; // Import the poker table styles
+
+const PokerTable = ({ players, potValue, bigBlindValue, boardCards }) => {
+  return (
+    <div className="poker-table">
+      {/* Table for the board cards */}
+      <div className="board">
+        <CardsWrapper cardsNumber={boardCards.length} />
+      </div>
+      {/* Table header with pot and blind values */}
+      <div className="table-header">
+        <div className="table-header-item">
+          Pot: <span className="pot-value">${potValue}</span>
+        </div>
+        <div className="table-header-item">
+          Big Blind: <span className="big-blind-value">${bigBlindValue}</span>
+        </div>
+      </div>
+
+      {/* Render player information and their cards */}
+      <div className="players-container">
+        {players.map((player, index) => (
+          <div key={index} className="player">
+            <div className="player-cards">
+              <Player
+                key={index}
+                name={player.name}
+                balance={player.balance}
+                cards={player.cards}
+              />
+            </div>
+            <div className="player-info">
+              <div className="player-name">{player.name}</div>
+              <div className="player-balance">${player.balance}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default PokerTable;

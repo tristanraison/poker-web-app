@@ -1,0 +1,115 @@
+/* CardInputMenu Styles */
+.card-input-menu {
+    width: 100%;
+    /* Adjust as needed */
+    padding: 2px;
+    background-color: #222;
+    margin-top: 0vh;
+    /* Dark background color */
+    display: flex;
+    flex-direction: column;
+    /* Set the flex direction to column */
+    align-items: flex-start;
+    /* Align items to the left */
+}
+
+.user-cards-frame,
+.board-cards-frame {
+    width:max-content;
+    /* Adjust as needed */
+    padding: 0px;
+    background-color: #333;
+    /* Darker background color */
+    border: 0px solid #444;
+    /* Darker border color */
+    border-radius: 0px;
+}
+
+.user-cards-frame h3,
+.board-cards-frame h3 {
+    margin-top: 0;
+    text-align: center;
+    color: #fff;
+    /* Text color */
+}
+/* Style for the card input menu container */
+.card-input-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Style for the user cards and board cards frames */
+.user-cards-frame,
+.board-cards-frame {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Style for the user cards and board cards headers */
+.user-cards-frame h3,
+.board-cards-frame h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: rgb(190, 190, 190);
+}
+
+/* Style for the card input containers */
+.card-input {
+    margin-bottom: 10px;
+}
+
+/* Style for the input field */
+.card-input input[type="text"] {
+    width: 90%;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.2s ease-in-out;
+}
+
+/* Style for input focus (when clicked or selected) */
+.card-input input[type="text"]:focus {
+    outline: none;
+    /* Remove default focus outline */
+    border-color: #007bff;
+    /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    /* Add a subtle box shadow */
+}
+
+/* Style for input placeholder text */
+.card-input input[type="text"]::placeholder {
+    color: #888;
+    /* Placeholder text color */
+}
+
+/* Style for error message (if needed) */
+.error-message {
+    color: #ff0000;
+    /* Error message text color */
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Style for the reset button */
+.card-input button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    /* Button background color */
+    color: #fff;
+    /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Style for button hover (when mouse is over the button) */
+.card-input button:hover {
+    background-color: #0056b3;
+    /* Change background color on hover */
+}
