@@ -1,0 +1,52 @@
+/* seat.css */
+
+.seat-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f450;
+    /* Light grey as the base background */
+    flex: 0 0 calc(15% - 2%);
+    /* Adjusted margin */
+    padding-top: calc(18.5% - 2%);
+    /* Maintain aspect ratio with padding */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 1px;
+    margin: 1%;
+    /* Adjusted margin */
+}
+
+.seat-container:hover {
+    background-color: #ecb8b8;
+    /* Slight color change on hover */
+    transform: translateY(-5px);
+    /* Seat lifts slightly on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.empty-seat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #888;
+    /* Slightly dimmed text for "Empty Seat" */
+    font-weight: 500;
+    /* Semi-bold text for better visibility */
+}
+
+.seat-1 {
+    border-top: 5px solid #FF5722;
+}
+
+.seat-2,
+.seat-3,
+.seat-4,
+.seat-5,
+.seat-6 {
+    border-top: 5px solid #FFC107;
+}
+

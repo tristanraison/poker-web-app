@@ -1,0 +1,28 @@
+/* Header.css */
+.header {
+    background-color: rgb(26, 22, 22);
+    /* Dark background color */
+    color: #fff;
+    /* Text color for the header */
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: #fff;
+    /* Text color for navigation links */
+    text-decoration: none;
+    margin-right: 0rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}

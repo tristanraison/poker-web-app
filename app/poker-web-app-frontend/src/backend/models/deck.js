@@ -1,24 +1,26 @@
-// poker-web-app-backend/models/deck.js
 const PokerCard = require("./pokerCard");
+
+const validSuits = ["Hearts", "Diamonds", "Clubs", "Spades"];
+const validRanks = [
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "J",
+  "Q",
+  "K",
+  "A",
+];
 
 class Deck {
   constructor() {
-    this.suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
-    this.ranks = [
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "Jack",
-      "Queen",
-      "King",
-      "Ace",
-    ];
+    this.suits = validSuits;
+    this.ranks = validRanks;
     this.cards = this.createDeck();
   }
 
@@ -47,4 +49,8 @@ class Deck {
   }
 }
 
-module.exports = Deck;
+module.exports = {
+  validSuits,
+  validRanks,
+  Deck,
+};

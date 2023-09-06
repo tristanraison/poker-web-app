@@ -1,1 +1,1 @@
-{"scripts":{"start":"node backend/index.js","server":"node backend/index.js","client":"cd frontend/poker-web-app-frontend && npm start","dev":"concurrently \"npm run server\" \"npm run client\""},"dependencies":{"react-playing-card":"^0.2.5"}}
+{"scripts":{"start":"node app/poker-web-app-frontend/src/index.js","server":"node app/poker-web-app-frontend/src/backend/index.js","client":"cd app/poker-web-app-frontend && npm start","dev":"concurrently \"npm run server\" \"npm run client\""},"dependencies":{"react-playing-card":"^0.2.5"}}
