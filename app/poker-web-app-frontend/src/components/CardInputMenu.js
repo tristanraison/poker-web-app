@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./../css/cardInputMenu.css";
 import { createCard } from "./Card/cardUtils.js";
+import Alert from "./Alert"; // Import your custom alert component
 
 const CardInputMenu = ({ updatePlayer1Cards, updateBoardCards }) => {
   const clearCard = createCard("");
@@ -13,25 +14,16 @@ const CardInputMenu = ({ updatePlayer1Cards, updateBoardCards }) => {
     clearCard,
   ]);
 
-  const [resetUserInputs, setResetUserInputs] = useState(false);
-  const [resetBoardInputs, setResetBoardInputs] = useState(false);
-
   const [userCardText, setUserCardText] = useState(["", ""]);
   const [boardCardText, setBoardCardText] = useState(["", "", "", "", ""]);
+  const [error, setError] = useState("");
+  const [showError, setShowError] = useState(false);
 
   const handleUserCardTextChange = (cardIndex) => (event) => {
     const newCardValue = event.target.value;
     const updatedUserCardText = [...userCardText];
     updatedUserCardText[cardIndex] = newCardValue;
     setUserCardText(updatedUserCardText);
-  };
-
-  const convertUserCardTextToUserCards = () => {
-    const newUserCards = userCardText.map((cardText) => createCard(cardText));
-    setUserCards(newUserCards);
-    updatePlayer1Cards(newUserCards);
-
-    // Optionally, you can also call your updatePlayer1Cards function here if needed.
   };
 
   const handleBoardCardTextChange = (cardIndex) => (event) => {
@@ -41,13 +33,31 @@ const CardInputMenu = ({ updatePlayer1Cards, updateBoardCards }) => {
     setBoardCardText(updatedBoardCardText);
   };
 
+  const convertUserCardTextToUserCards = () => {
+    try {
+      const newUserCards = userCardText.map((cardText) => createCard(cardText));
+      setUserCards(newUserCards);
+      updatePlayer1Cards(newUserCards);
+      setError(""); // Clear any previous errors
+      setShowError(false); // Hide the error alert
+    } catch (error) {
+      setError(error.message); // Update the error state with the error message
+      setShowError(true); // Show the error alert
+    }
+  };
+
   const convertBoardCardTextToUserCards = () => {
     const newBoardCards = boardCardText.map((cardText) => createCard(cardText));
     console.log("new board cards : ", newBoardCards);
     setUserCards(newBoardCards);
     updateBoardCards(newBoardCards);
+  };
 
-    // Optionally, you can also call your updatePlayer1Cards function here if needed.
+  const handleResetUserInputs = () => {
+    const hiddenCard = createCard("");
+    const updatedUserCards = [hiddenCard, hiddenCard];
+    updatePlayer1Cards(updatedUserCards);
+    setUserCardText(["", ""]);
   };
 
   const handleResetBoardInputs = () => {
@@ -60,22 +70,21 @@ const CardInputMenu = ({ updatePlayer1Cards, updateBoardCards }) => {
       hiddenCard,
     ];
     updateBoardCards(updatedBoardCards);
-  };
-
-  const handleResetUserInputs = () => {
-    const hiddenCard = createCard("");
-    const updatedUserCards = [hiddenCard, hiddenCard];
-    updatePlayer1Cards(updatedUserCards);
+    setBoardCardText(["", "", "", "", ""]);
   };
 
   const handleResetAllCards = () => {
-    // Reset user cards
+    // Reset user cards and board cards
     handleResetUserInputs();
     handleResetBoardInputs();
   };
 
   return (
     <div className="card-input-menu">
+      {/* ... Other components ... */}
+      {showError && (
+        <Alert message={error} onClose={() => setShowError(false)} />
+      )}
       <div className="user-cards-frame">
         <h3>User Cards</h3>
         {userCards.map((card, cardIndex) => (
@@ -88,7 +97,17 @@ const CardInputMenu = ({ updatePlayer1Cards, updateBoardCards }) => {
             />
           </div>
         ))}
-        <button onClick={handleResetUserInputs}>Reset User Cards</button>
+        <div className="buttons">
+          <button
+            className="modern-button"
+            onClick={convertUserCardTextToUserCards}
+          >
+            Convert User Cards
+          </button>
+          <button className="modern-button" onClick={handleResetUserInputs}>
+            Reset User Cards
+          </button>
+        </div>
       </div>
       <div className="board-cards-frame">
         <h3>Board Cards</h3>
@@ -98,24 +117,29 @@ const CardInputMenu = ({ updatePlayer1Cards, updateBoardCards }) => {
               type="text"
               placeholder={`Board Card ${cardIndex + 1}`}
               value={boardCardText[cardIndex]}
-              onChange={handleBoardCardTextChange(cardIndex)}
+              onChange={(event) => handleBoardCardTextChange(cardIndex)(event)}
             />
           </div>
         ))}
-        <button onClick={handleResetBoardInputs}>Reset Board Cards</button>
+        <div className="buttons">
+          <button
+            className="modern-button"
+            onClick={convertBoardCardTextToUserCards}
+          >
+            Convert Board Cards
+          </button>
+          <button className="modern-button" onClick={handleResetBoardInputs}>
+            Reset Board Cards
+          </button>
+        </div>
       </div>
-      <div className="reset-all-cards-button">
-        <button onClick={handleResetAllCards}>Reset All Cards</button>
-      </div>
-      <div>
-        <button onClick={convertUserCardTextToUserCards}>
-          Convert User Cards
-        </button>
-      </div>
-      <div>
-        <button onClick={convertBoardCardTextToUserCards}>
-          Convert User Cards
-        </button>
+      <div className="board-cards-frame">
+        <div className="buttons">
+          <h3>Reset all cards</h3>
+          <button className="modern-button" onClick={handleResetAllCards}>
+            Reset All Cards
+          </button>
+        </div>
       </div>
     </div>
   );

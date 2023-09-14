@@ -1,27 +1,19 @@
 /* CardInputMenu Styles */
 .card-input-menu {
     width: 100%;
-    /* Adjust as needed */
     padding: 2px;
     background-color: #222;
     margin-top: 0vh;
-    /* Dark background color */
-    display: flex;
     flex-direction: column;
-    /* Set the flex direction to column */
     align-items: flex-start;
-    /* Align items to the left */
 }
 
 .user-cards-frame,
 .board-cards-frame {
-    width:max-content;
-    /* Adjust as needed */
+    width: max-content;
     padding: 0px;
     background-color: #333;
-    /* Darker background color */
     border: 0px solid #444;
-    /* Darker border color */
     border-radius: 0px;
 }
 
@@ -30,22 +22,17 @@
     margin-top: 0;
     text-align: center;
     color: #fff;
-    /* Text color */
-}
-/* Style for the card input menu container */
-.card-input-menu {
-    display: flex;
-    justify-content: space-between;
 }
 
 /* Style for the user cards and board cards frames */
 .user-cards-frame,
 .board-cards-frame {
     flex: 1;
+    width: 30%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 /* Style for the user cards and board cards headers */
@@ -59,11 +46,18 @@
 /* Style for the card input containers */
 .card-input {
     margin-bottom: 10px;
+
+    display: flex;
+    /* Add display flex to align items horizontally */
+    align-items: center;
+    /* Vertically align items in the center */
+    justify-content: space-between;
+    /* Add space between input and buttons */
 }
 
 /* Style for the input field */
 .card-input input[type="text"] {
-    width: 90%;
+    width: 100%;
     padding: 5px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -74,34 +68,30 @@
 /* Style for input focus (when clicked or selected) */
 .card-input input[type="text"]:focus {
     outline: none;
-    /* Remove default focus outline */
     border-color: #007bff;
-    /* Change border color on focus */
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    /* Add a subtle box shadow */
 }
 
 /* Style for input placeholder text */
 .card-input input[type="text"]::placeholder {
     color: #888;
-    /* Placeholder text color */
 }
 
 /* Style for error message (if needed) */
 .error-message {
     color: #ff0000;
-    /* Error message text color */
     font-size: 12px;
     margin-top: 5px;
 }
 
 /* Style for the reset button */
 .card-input button {
-    padding: 8px 16px;
-    background-color: #007bff;
-    /* Button background color */
+    width: 60px;
+    /* Set a fixed width for the buttons */
+    height: 30px;
+    /* Set a fixed height for the buttons */
+    background-color: #17181a;
     color: #fff;
-    /* Button text color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -110,6 +100,26 @@
 
 /* Style for button hover (when mouse is over the button) */
 .card-input button:hover {
-    background-color: #0056b3;
-    /* Change background color on hover */
+    background-color: #4f86bc;
+}
+
+.modern-button {
+    width: 100%;
+    /* Set a fixed width for the buttons */
+    height: 30%;
+    /* Set a fixed height for the buttons */
+    background-color: #5f6163;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5% 0;
+    /* Adjust padding */
+    margin-top: 2%;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modern-button:hover {
+    background-color: #282a2b;
 }
