@@ -11,7 +11,7 @@ const CardsWrapper = ({ cards }) => {
           suit={card.suit}
           color={card.color}
           rank={card.rank}
-          hidden={card.hidden}
+          isHidden={card.isHidden}
         />
       ))}
     </div>

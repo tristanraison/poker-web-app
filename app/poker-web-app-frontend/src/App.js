@@ -12,8 +12,8 @@ const App = () => {
       position: 1, // Player's seating position
       balance: 1000,
       cards: [
-        { rank: "10", suit: "Spades" },
-        { rank: "10", suit: "Spades" },
+        { rank: "", suit: "", isHidden: true },
+        { rank: "", suit: "", isHidden: true },
       ],
     },
     // Add more players as needed
@@ -22,11 +22,11 @@ const App = () => {
   const potValue = 5000; // Example pot value
   const bigBlindValue = 100; // Example big blind value
   const boardCards = [
-    { rank: "10", suit: "Spades" },
-    { rank: "10", suit: "Spades" },
-    { rank: "10", suit: "Spades" },
-    { rank: "10", suit: "Spades" },
-    { rank: "10", suit: "Spades" },
+    { rank: "", suit: "", isHidden: true },
+    { rank: "", suit: "", isHidden: true },
+    { rank: "", suit: "", isHidden: true },
+    { rank: "", suit: "", isHidden: true },
+    { rank: "", suit: "", isHidden: true },
   ]; // Example board cards
 
   return (

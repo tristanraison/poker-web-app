@@ -2,75 +2,76 @@ import React, { useState } from "react";
 import "./../css/cardInputMenu.css";
 import { createCard } from "./Card/cardUtils.js";
 
-const CardInputMenu = ({
-  updatePlayer1Cards,
-  boardCards,
-  updateBoardCards,
-}) => {
-  const [userCards, setUserCards] = useState(["", ""]);
+const CardInputMenu = ({ updatePlayer1Cards, updateBoardCards }) => {
+  const clearCard = createCard("");
+  const [userCards, setUserCards] = useState([clearCard, clearCard]);
+  const [boardCards, setBoardCards] = useState([
+    clearCard,
+    clearCard,
+    clearCard,
+    clearCard,
+    clearCard,
+  ]);
 
   const [resetUserInputs, setResetUserInputs] = useState(false);
   const [resetBoardInputs, setResetBoardInputs] = useState(false);
 
-  const handleUserCardChange = (cardIndex) => (event) => {
+  const [userCardText, setUserCardText] = useState(["", ""]);
+  const [boardCardText, setBoardCardText] = useState(["", "", "", "", ""]);
+
+  const handleUserCardTextChange = (cardIndex) => (event) => {
     const newCardValue = event.target.value;
-    const updatedUserCards = [...userCards];
-    updatedUserCards[cardIndex] = newCardValue;
-
-    setUserCards(updatedUserCards);
-    updatePlayer1Cards(updatedUserCards);
+    const updatedUserCardText = [...userCardText];
+    updatedUserCardText[cardIndex] = newCardValue;
+    setUserCardText(updatedUserCardText);
   };
 
-  const handleUserCardBlur = (cardIndex) => () => {
-    const cardValue = userCards[cardIndex];
+  const convertUserCardTextToUserCards = () => {
+    const newUserCards = userCardText.map((cardText) => createCard(cardText));
+    setUserCards(newUserCards);
+    updatePlayer1Cards(newUserCards);
 
-    try {
-      const validCard = createCard(cardValue);
-      if (validCard) {
-        const updatedUserCards = [...userCards];
-        updatedUserCards[cardIndex] = validCard;
-        setUserCards(updatedUserCards);
-        updatePlayer1Cards(updatedUserCards);
-      }
-    } catch (error) {
-      console.error(error.message);
-    }
+    // Optionally, you can also call your updatePlayer1Cards function here if needed.
   };
 
-  const handleBoardCardChange = (cardIndex) => (event) => {
-    const newBoardCardValue = event.target.value;
-    const updatedBoardCards = [...boardCards];
-    updatedBoardCards[cardIndex] = newBoardCardValue;
-
-    updateBoardCards(updatedBoardCards); // Update the board cards in the parent component
+  const handleBoardCardTextChange = (cardIndex) => (event) => {
+    const newCardValue = event.target.value;
+    const updatedBoardCardText = [...boardCardText];
+    updatedBoardCardText[cardIndex] = newCardValue;
+    setBoardCardText(updatedBoardCardText);
   };
 
-  const handleBoardCardBlur = (cardIndex) => () => {
-    const cardValue = boardCards[cardIndex];
+  const convertBoardCardTextToUserCards = () => {
+    const newBoardCards = boardCardText.map((cardText) => createCard(cardText));
+    console.log("new board cards : ", newBoardCards);
+    setUserCards(newBoardCards);
+    updateBoardCards(newBoardCards);
 
-    try {
-      const validCard = createCard(cardValue);
-      if (validCard) {
-        const updatedBoardCards = [...boardCards];
-        updatedBoardCards[cardIndex] = validCard;
-        updateBoardCards(updatedBoardCards);
-      }
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
-  const handleResetUserInputs = () => {
-    setUserCards(["", ""]);
-    setResetUserInputs(true);
-    setTimeout(() => {
-      setResetUserInputs(false);
-    }, 100);
+    // Optionally, you can also call your updatePlayer1Cards function here if needed.
   };
 
   const handleResetBoardInputs = () => {
-    const updatedBoardCards = ["", "", "", "", ""];
+    const hiddenCard = createCard("");
+    const updatedBoardCards = [
+      hiddenCard,
+      hiddenCard,
+      hiddenCard,
+      hiddenCard,
+      hiddenCard,
+    ];
     updateBoardCards(updatedBoardCards);
+  };
+
+  const handleResetUserInputs = () => {
+    const hiddenCard = createCard("");
+    const updatedUserCards = [hiddenCard, hiddenCard];
+    updatePlayer1Cards(updatedUserCards);
+  };
+
+  const handleResetAllCards = () => {
+    // Reset user cards
+    handleResetUserInputs();
+    handleResetBoardInputs();
   };
 
   return (
@@ -82,9 +83,8 @@ const CardInputMenu = ({
             <input
               type="text"
               placeholder={`User Card ${cardIndex + 1}`}
-              value={userCards[cardIndex]}
-              onChange={handleUserCardChange(cardIndex)}
-              onBlur={handleUserCardBlur(cardIndex)}
+              value={userCardText[cardIndex]}
+              onChange={(event) => handleUserCardTextChange(cardIndex)(event)}
             />
           </div>
         ))}
@@ -97,13 +97,25 @@ const CardInputMenu = ({
             <input
               type="text"
               placeholder={`Board Card ${cardIndex + 1}`}
-              value={boardCards[cardIndex]}
-              onChange={handleBoardCardChange(cardIndex)}
-              onBlur={handleBoardCardBlur(cardIndex)}
+              value={boardCardText[cardIndex]}
+              onChange={handleBoardCardTextChange(cardIndex)}
             />
           </div>
         ))}
         <button onClick={handleResetBoardInputs}>Reset Board Cards</button>
+      </div>
+      <div className="reset-all-cards-button">
+        <button onClick={handleResetAllCards}>Reset All Cards</button>
+      </div>
+      <div>
+        <button onClick={convertUserCardTextToUserCards}>
+          Convert User Cards
+        </button>
+      </div>
+      <div>
+        <button onClick={convertBoardCardTextToUserCards}>
+          Convert User Cards
+        </button>
       </div>
     </div>
   );

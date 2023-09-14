@@ -23,7 +23,6 @@ const Game = ({ players, potValue, bigBlindValue, boardCards }) => {
   };
 
   const updateBoardCards = (newBoardCards) => {
-    console.log("new board cards : ", newBoardCards);
     setGameBoardCards(newBoardCards);
   };
 
@@ -32,8 +31,6 @@ const Game = ({ players, potValue, bigBlindValue, boardCards }) => {
   }, [players]);
 
   useEffect(() => {
-    console.log("board cards : ", boardCards);
-
     setGameBoardCards(boardCards);
   }, [boardCards]);
 
