@@ -36,6 +36,19 @@ class Player {
     }
     this.hand = [card1, card2];
   }
+
+  // Function to check if a hand (two cards) is valid
+  static isValidHand(card1, card2) {
+    console.log("card 1 : ", card1);
+    console.log("card 2 : ", card2);
+    console.log(card1.equals(card2));
+    if (!(card1 instanceof PokerCard) || !(card2 instanceof PokerCard)) {
+      // Ensure both inputs are instances of PokerCard
+      throw new Error("Both inputs must be PokerCard objects");
+    }
+
+    return !card1.equals(card2); // Check if the two cards are distinct
+  }
 }
 
 module.exports = Player;

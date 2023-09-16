@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./../css/cardInputMenu.css";
 import { createCard } from "./Card/cardUtils.js";
 import Alert from "./Alert"; // Import your custom alert component
+import Player from "../backend/models/player";
 
 const CardInputMenu = ({ updatePlayer1Cards, updateBoardCards }) => {
   const clearCard = createCard("");
@@ -36,6 +37,11 @@ const CardInputMenu = ({ updatePlayer1Cards, updateBoardCards }) => {
   const convertUserCardTextToUserCards = () => {
     try {
       const newUserCards = userCardText.map((cardText) => createCard(cardText));
+      // Check if the hand is valid
+      if (!Player.isValidHand(newUserCards[0], newUserCards[1])) {
+        throw new Error("Invalid hand: Both cards must be distinct.");
+      }
+
       setUserCards(newUserCards);
       updatePlayer1Cards(newUserCards);
       setError(""); // Clear any previous errors
