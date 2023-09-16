@@ -3,7 +3,7 @@
 .game-container {
     position: relative;
     width: 100%;
-    max-width: 1060px;
+
     height: 100%;
     margin: 0px auto;
     border: 2px solid #333;
@@ -51,7 +51,7 @@
     /* Use 100% height to match the height of the parent container */
     z-index: 0;
     /* Place it below the poker table */
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     /* Allow items to wrap to a new line if needed */
 }
 

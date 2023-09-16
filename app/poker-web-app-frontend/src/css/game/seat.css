@@ -2,13 +2,14 @@
 
 .seat-container {
     display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
     background-color: #f4f4f450;
     /* Light grey as the base background */
-    flex: 0 0 calc(15% - 2%);
+    /* flex: 0 0 calc(15% - 2%); */
     /* Adjusted margin */
-    padding-top: calc(18.5% - 2%);
+    /* padding-top: calc(18.5% - 2%); */
     /* Maintain aspect ratio with padding */
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

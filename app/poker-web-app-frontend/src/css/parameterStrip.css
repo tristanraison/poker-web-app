@@ -10,6 +10,7 @@
 .parameter {
     margin: 0 20px;
     display: flex;
+    font-size: 20px;
     align-items: center;
     color: white;
 }
