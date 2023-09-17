@@ -4,6 +4,7 @@ import "./../../css/game/seat.css";
 
 const Seat = ({ playerData, position }) => {
   // Conditional rendering: Display Player if playerData exists, otherwise show the seat as empty.
+
   return (
     <div className={`seat-container seat-${position}`}>
       {playerData ? (

@@ -42,7 +42,11 @@
 }
 
 .card.hidden {
-    background-color: #333;
+    background: linear-gradient(45deg, #978f8fba, #978f8fba),
+            repeating-linear-gradient(-45deg, #aa1212ba 0px, #aa1212ba 5px, transparent 1px, transparent 10px);
+        background-size: cover;
+            color: #fff;
+        opacity: 1;
 }
 
 .card-content {

@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./../../css/cards/card.css";
 
-const Card = ({ suit, rank, hidden }) => {
-  const cardClasses = `card ${hidden ? "hidden" : ""} ${suit}`;
-
+const Card = ({ suit, rank, isHidden }) => {
+  const cardClasses = `card ${isHidden ? "hidden" : ""} ${suit}`;
   return (
     <div className={cardClasses}>
       <div className="card-content">
@@ -18,7 +17,8 @@ const Card = ({ suit, rank, hidden }) => {
 };
 
 Card.propTypes = {
-  suit: PropTypes.oneOf(["Hearts", "Diamonds", "Spades", "Clubs"]).isRequired,
+  suit: PropTypes.oneOf(["Hearts", "Diamonds", "Spades", "Clubs", ""])
+    .isRequired,
   rank: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   hidden: PropTypes.bool,
 };

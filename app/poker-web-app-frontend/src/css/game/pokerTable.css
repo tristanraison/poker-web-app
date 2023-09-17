@@ -46,6 +46,8 @@
 
 .table-header {
     background-color: rgba(167, 158, 158, 0.5);
+    font-size: 20px;
+    font-weight: bold;
     border-radius: 5px;
     padding: 1rem;
     display: flex;
