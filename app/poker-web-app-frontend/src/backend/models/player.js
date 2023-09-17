@@ -37,14 +37,26 @@ class Player {
     this.hand = [card1, card2];
   }
 
+  static isEmptyCard(card) {
+    if (card.rank === "" || card.suit === "") {
+      return true;
+    }
+    return false;
+  }
+
   // Function to check if a hand (two cards) is valid
   static isValidHand(card1, card2) {
-    console.log("card 1 : ", card1);
-    console.log("card 2 : ", card2);
-    console.log(card1.equals(card2));
     if (!(card1 instanceof PokerCard) || !(card2 instanceof PokerCard)) {
       // Ensure both inputs are instances of PokerCard
       throw new Error("Both inputs must be PokerCard objects");
+    }
+
+    if (this.isEmptyCard(card1)) {
+      throw new Error("Card 1 can't be empty");
+    }
+
+    if (this.isEmptyCard(card2)) {
+      throw new Error("Card 2 can't be empty");
     }
 
     return !card1.equals(card2); // Check if the two cards are distinct

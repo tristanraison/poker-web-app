@@ -20,6 +20,11 @@ const CardInputMenu = ({ updatePlayer1Cards, updateBoardCards }) => {
   const [error, setError] = useState("");
   const [showError, setShowError] = useState(false);
 
+  const [isPlayerHandSet, setIsPlayerHandSet] = useState(false);
+  const [isBoardFlopSet, setIsBoardFlopSet] = useState(false);
+  const [isBoardTurnSet, setIsBoardTurnSet] = useState(false);
+  const [isBoardRiverSet, setIsBoardRiverSet] = useState(false);
+
   const handleUserCardTextChange = (cardIndex) => (event) => {
     const newCardValue = event.target.value;
     const updatedUserCardText = [...userCardText];
@@ -46,6 +51,7 @@ const CardInputMenu = ({ updatePlayer1Cards, updateBoardCards }) => {
       updatePlayer1Cards(newUserCards);
       setError(""); // Clear any previous errors
       setShowError(false); // Hide the error alert
+      setIsPlayerHandSet(true);
     } catch (error) {
       setError(error.message); // Update the error state with the error message
       setShowError(true); // Show the error alert
@@ -54,7 +60,6 @@ const CardInputMenu = ({ updatePlayer1Cards, updateBoardCards }) => {
 
   const convertBoardCardTextToUserCards = () => {
     const newBoardCards = boardCardText.map((cardText) => createCard(cardText));
-    console.log("new board cards : ", newBoardCards);
     setUserCards(newBoardCards);
     updateBoardCards(newBoardCards);
   };
